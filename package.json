@@ -1,0 +1,27 @@
+{
+  "name": "chat-app-socket.io",
+  "version": "1.0.0",
+  "description": "Socket io powered chat app built mainly with Node JS.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrewjthomsen/chat-app-socket.io.git"
+  },
+  "author": "Andrew Thomsen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andrewjthomsen/chat-app-socket.io/issues"
+  },
+  "homepage": "https://github.com/andrewjthomsen/chat-app-socket.io#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.2"
+  }
+}
