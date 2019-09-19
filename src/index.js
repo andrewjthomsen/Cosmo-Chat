@@ -14,6 +14,11 @@ const publicDirectoryPath = path.join(__dirname, '../public');
 
 app.use(express.static(publicDirectoryPath));
 
+
+// Message for when a client connects to server-> fires whenever socket io gets another connection
+io.on('connection', () => {
+    console.log('New web socket connection.');
+})
 // Fires up http server
 server.listen(port, () => {
     console.log(`Server is up on port ${port}!`);
