@@ -1,14 +1,18 @@
 <!DOCTYPE class="html">
 <html>
-    <head>
+  <head> </head>
+  <body>
+    Chat App!
 
-    </head>
-    <body>
-        Chat App!
-        <!-- Loads in client side socket io library -->
-        <!-- Gives access to all of socket io's library -->
-        <script src="/socket.io/socket.io.js"></script>
-        <!-- Loads in the new client-side script -->
-        <script src="/js/chat.js"></script>
-    </body>
+    <form id="message-form">
+      <input name="message" placeholder="message" />
+      <button>Send</button>
+    </form>
+    <button id="send-location">Send Location</button>
+    <!-- Loads in client side socket io library -->
+    <!-- Gives access to all of socket io's library -->
+    <script src="/socket.io/socket.io.js"></script>
+    <!-- Loads in the new client-side script -->
+    <script src="./js/chat.js"></script>
+  </body>
 </html>
