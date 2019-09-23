@@ -1,17 +1,26 @@
-// Client-side js file is responsible for loading in and handling socket io script in index.html
-//  Connects to server using web socket function io
 const socket = io();
-// accepts two arguments. Name of event and function to run when event occurs
+
+const $messageForm = document.querySelector("#message-form");
+const $messageFormInput = $messageForm.querySelector("input");
+const $messageFormButton = $messageForm.querySelector("button");
+const $sendLocationButton = document.querySelector("#send-location")
 socket.on("message", message => {
   console.log(message);
 });
 
-document.querySelector("#message-form").addEventListener("submit", e => {
+$messageForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
+  // Disbales form once submited
+  $messageFormButton.setAttribute("disabled", "disabled")
+
   const message = e.target.elements.message.value;
-// RUNS when event is acknoweledged
+
   socket.emit("sendMessage", message, (error) => {
+    $messageFormButton.removeAttribute("disbaled");
+    $messageFormInput.value = ""
+    $messageFormInput.focus()
+   
     if (error) {
       return console.log(error)
     }
@@ -20,16 +29,19 @@ document.querySelector("#message-form").addEventListener("submit", e => {
   });
 });
 
-document.querySelector("#send-location").addEventListener("click", () => {
+$sendLocationButton.addEventListener("click", () => {
   if (!navigator.geolocation) {
     return alert("Error Geolocation is not supported by your browser.");
   }
-  // When GEolocation is supported
+
+  $sendLocationButton.setAttribute("disabled", "disabled")
+ 
   navigator.geolocation.getCurrentPosition(position => {
     socket.emit("sendLocation", {
       latitude: position.coords.latitude,
       longitude: position.coords.longitude
     }, () => {
+      $sendLocationButton.removeAttribute("disabled")
       console.log("Location shared.")
     });
   });
