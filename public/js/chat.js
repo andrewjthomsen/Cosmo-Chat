@@ -1,3 +1,4 @@
+// Client file
 const socket = io();
 
 const $messageForm = document.querySelector("#message-form");
@@ -14,16 +15,18 @@ const locationMessageTemplate = document.querySelector("#location-message-templa
 socket.on("message", message => { // Render user messages 
   console.log(message)
   const html = Mustache.render(messageTemplate, { // stores html rendered to browser
-      message: message
+      message: message.text,
+      createdAt: moment(message.createdAt).format("h:mm A")
   })
   $messages.insertAdjacentHTML("beforeend", html) // Adds new messages at bottom 
 });
 
 
-socket.on("locationMessage", (url) => { // Render location template when sent by user
-  console.log("url", url)
+socket.on("locationMessage", (message) => { // Render location template when sent by user
+  console.log("url", message.url)
   const html = Mustache.render(locationMessageTemplate, {
-    url: url
+    url: message.url,
+    createdAt: moment(message.createdAt).format("h:mm A")
   })
   $messages.insertAdjacentHTML("beforeend", html) //  Location renders at bottom of div
 })

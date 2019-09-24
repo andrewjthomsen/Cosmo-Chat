@@ -1,8 +1,10 @@
+// Server
 const path = require("path");
 const http = require("http");
 const express = require("express");
 const socketio = require("socket.io");
 const Filter = require("bad-words"); // filters out use of bad language in chat app
+const { generateMessage, generateLocationMessage } = require("./utils/messages"); // Responsible for message generation
 
 const app = express();
 const server = http.createServer(app); // Enables creating a new web server
@@ -17,8 +19,8 @@ app.use(express.static(publicDirectoryPath));
 io.on("connection", socket => {
   console.log("New web socket connection.");
 
-  socket.emit("message", "Welcome new user!");
-  socket.broadcast.emit("message", "A new user has joined the chat room!");
+  socket.emit("message", generateMessage("Welcome!"));
+  socket.broadcast.emit("message", generateMessage("A new user has joined the chat room!"));
  
   socket.on("sendMessage", (message, callback) => {
     const filter = new Filter()
@@ -27,19 +29,19 @@ io.on("connection", socket => {
       return callback({warning: "Profanity isn't allowed in chatroom!"})
     }
 
-    io.emit("message", message);
+    io.emit("message", generateMessage(message));
     callback("Delivered...")
   });
 
   socket.on("sendLocation", (coordinates, callback) => {
     io.emit(
       "locationMessage",
-      `https://google.com/maps?q=: ${coordinates.latitude},${coordinates.longitude}`);
+      generateLocationMessage(`https://google.com/maps?q=: ${coordinates.latitude},${coordinates.longitude}`));
     callback()
   });
 
   socket.on("disconnect", () => {
-    io.emit("message", "A user has left the chat room.");
+    io.emit("message", generateMessage("A user has left the chat room."));
   });
 });
 
