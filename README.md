@@ -1,7 +1,7 @@
 # chat-app-socket.io
 
 ## Description
-Welcome to Orange Wire Chat App! This chatroom application is a user friendly Socket IO powered chat app, written with Node.JS. User's can chat with each other in real time thanks to the Socket Io library and is parent appproved because of it's filter on foul language. This chat app is user friendly for all ages!
+Cosmo Chat is a Socket.io powered chat room application that allows users to chat in real-time. 
 
 ## Libraries Used
 - Socket.io, 
@@ -12,7 +12,10 @@ Welcome to Orange Wire Chat App! This chatroom application is a user friendly So
 - Qs- Responsible for creating room names and user names.
 
 ## Features
-Application features bad-words npm library to filter out bad language for this chat app. Geolocation services, which are provided by the use of MDN Geolocation API. 
+- Ability to share location with other users
+- Profanity filter to keep language PG.
 
 ## Possible Future Features
-- As a user, I want to be able to see a picture of where the user is from when they share their location. Look into being able to send a picture of a city instead of coordinates when a user send their location. Think of way for coordinates sent are converted to a picture of  location.
+- Improved design and mobile responsiveness
+- Authentication with Passport
+- User login screen
