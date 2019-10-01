@@ -1,7 +1,8 @@
 // File responsible for defining functions that are going to generate message objects
-const generateMessage = (text) => {
+const generateMessage = (username, text) => {
     return {
-        text: text,
+        username,
+        text,
         createdAt: new Date().getTime()   
      }
 }
