@@ -72,4 +72,10 @@ $sendLocationButton.addEventListener('click', () => {
     })
 })
 // Accepts username and room user is trying to join
-socket.emit('join', { username, room })
+socket.emit('join', { username, room }, (error) => {
+    // error handling
+    if (error) {
+        alert(error)
+        location.href='/'
+    }
+})

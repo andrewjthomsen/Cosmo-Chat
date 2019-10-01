@@ -5,7 +5,7 @@ const express = require('express')
 const socketio = require('socket.io')
 const Filter = require('bad-words')  // filters out use of bad language in chat app
 const { generateMessage, generateLocationMessage } = require('./utils/messages') // Responsible for message generation
-
+const { addUser, removeUser, getUser, getUsersInRoom } = require('./utils/users')
 const app = express()
 const server = http.createServer(app) // Enables creating a new web server
 const io = socketio(server) // Configures web sockets to work with server
@@ -18,16 +18,20 @@ app.use(express.static(publicDirectoryPath))
 io.on('connection', (socket) => {
     console.log('New WebSocket connection')
 
-// Event listener for joining a chat room
-socket.on('join', ({ username, room}) => {
-    // Responsible for allowing the join to occur/name of room
-    socket.join(room)
+// Event listener for joining a chat room/ tracking a user
+socket.on('join', ({ username, room}, callback) => {
+    // Adds user to users array
+    const { error, user } = addUser({ id: socket.id, username, room })
+    if (error) {
+       return callback(error)
+    }
+
+     socket.join(user.room) // Responsible for allowing the join to occur/name of room
 
     socket.emit('message', generateMessage('Welcome!'))
         // socket.broadcast.to.emit- Sends event to everyone except client. Limited to a specific chatroom. 
-    socket.broadcast.to(room).emit('message', generateMessage(`${username} has joined the chat room!`))
-    // io.to.emit-> Emits an event to everyone in a specific room. Event doesn't leave room.
-
+    socket.broadcast.to(user.room).emit('message', generateMessage(`${user.username} has joined the chat room!`))
+    callback()
 })
 
     socket.on('sendMessage', (message, callback) => {
@@ -47,7 +51,11 @@ socket.on('join', ({ username, room}) => {
     })
 
     socket.on('disconnect', () => {
-        io.emit('message', generateMessage('A user has left!'))
+        const user = removeUser(socket.id)// Will either return removed user as an obj or undefined if no user was removed.
+
+        if (user) {
+            io.to(user.room).emit('message', generateMessage(`${user.username} has left.`))
+        }
     })
 })
 
