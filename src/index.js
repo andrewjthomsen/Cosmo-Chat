@@ -31,6 +31,11 @@ socket.on('join', ({ username, room}, callback) => {
     socket.emit('message', generateMessage('Admin', 'Welcome!'))
         // socket.broadcast.to.emit- Sends event to everyone except client. Limited to a specific chatroom. 
     socket.broadcast.to(user.room).emit('message', generateMessage('Admin',`${user.username} has joined the chat room!`))
+    io.to(user.room).emit("roomData", {
+        room: user.room,
+        users: getUsersInRoom(user.room)
+    })
+
     callback()
 })
 
@@ -57,6 +62,10 @@ socket.on('join', ({ username, room}, callback) => {
 
         if (user) {
             io.to(user.room).emit('message', generateMessage('Admin', `${user.username} has left.`))
+            io.to(user.room).emit("roomData", {
+                room: user.room,
+                users: getUsersInRoom(user.room)
+            })
         }
     })
 })

@@ -39,22 +39,20 @@ const removeUser = id => {
     return users.splice(index, 1)[0]; // Will return user objects, array method ends when match is found
   }
 };
-
-// getUser
 const getUser = id => {
   // .find array method -> returns match if match exists
   return users.find(user => user.id === id);
 };
-// getUsersInRoom
-const getUsersInRoom = (room) => {
-  room = room.trim().toLowerCase()
+// Allows us to track all users in a given room
+const getUsersInRoom = room => {
+  room = room.trim().toLowerCase();
   // Array method
-  return users.filter((user) => user.room === room)
-}
+  return users.filter(user => user.room === room);
+};
 
 module.exports = {
   addUser,
   removeUser,
   getUser,
   getUsersInRoom
-}
+};
