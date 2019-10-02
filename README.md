@@ -16,9 +16,10 @@ Cosmo Chat is a Socket.io powered chat room application that allows users to cha
 - Profanity filter to keep language PG.
 
 ## Possible Future Features
-- Improved design and mobile responsiveness
-- Authentication with Passport
+1. Let users pick from a drop down list of active chat rooms with other users from signin. 
+2. Authentication with Passport
 - User login screen
+3. Needs further styling (Cosmo themed)
 
 ## Demo
 Project can be viewed by clicking on the following link: https://aqueous-chamber-75752.herokuapp.com/
