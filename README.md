@@ -21,7 +21,7 @@ Cosmo Chat is a Socket.io powered chat room application that allows users to cha
 - User login screen
 
 ## Demo
-Project can be viewed by clicking on the following link:
+Project can be viewed by clicking on the following link: https://aqueous-chamber-75752.herokuapp.com/
 
 ## Installation
 To run the application locally, first clone this repository with the following command.
