@@ -19,3 +19,24 @@ Cosmo Chat is a Socket.io powered chat room application that allows users to cha
 - Improved design and mobile responsiveness
 - Authentication with Passport
 - User login screen
+
+## Demo
+Project can be viewed by clicking on the following link:
+
+## Installation
+To run the application locally, first clone this repository with the following command.
+``` txt
+1. git clone git@github.com:andrewjthomsen/Cosmo-Chat.git
+Next, install the application dependencies.
+ ```
+```txt
+2. cd cosmo-chat
+3. npm install
+```
+
+Finally, run the node server locally.
+```txt
+4. npm run dev
+```
+node server
+Now, open the local application on port 8080 at the URL: http://localhost:3000/.
