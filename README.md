@@ -1,7 +1,7 @@
 # chat-app-socket.io
 
 ## Description
-Welcome to Cosmo Chat! This project is a Socket.io powered chat app that allows users to chat in real-time. I built this project because I wanted to learn more about Socket.io, which I was first introduced to during a group project during my full-stack dev bootcamp at UCSD. This application's backend was built with Node.js and the front-end was built with Mustache and CSS. The styling isn't this project's shining feature, because I wanted to put more focus on it's backend. The Goal of this project was to work on further developing my Node.js understanding as well as refresh my understanding of Socket.io. I plan to work more with Socket.io in the future and plan to build more apps as I continue learning.
+Welcome to Cosmo Chat! This project is a Socket.io powered chat app that allows users to chat in real-time. I built this project because I wanted to learn more about Socket.io, which I was first introduced to during a group project during my full-stack dev bootcamp at UCSD. This application's backend was built with Node.js and the front-end was built with Mustache and CSS. The Goal of this project was to work on further developing my Node.js understanding as well as refresh my understanding of Socket.io. I plan to work more with Socket.io in the future and plan to build more apps as I continue learning.
 
 ## Libraries Used
 - Socket.io, 
