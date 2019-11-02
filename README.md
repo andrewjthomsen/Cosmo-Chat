@@ -1,7 +1,7 @@
 # chat-app-socket.io
 
 ## Description
-Cosmo Chat is a Socket.io powered chat room application that allows users to chat in real-time. 
+This project was a passion project that was motivated by a group project. Cosmo Chat is a Socket.io powered chat app, written in Node.js that allows users to chat in real-time. MongoDb handles data storage and the styling was done with CSS. 
 
 ## Libraries Used
 - Socket.io, 
